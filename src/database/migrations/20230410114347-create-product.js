@@ -10,7 +10,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(30),
+        allowNull: false,
       },
       userId: {
         type: Sequelize.INTEGER
@@ -28,7 +29,8 @@ module.exports = {
         type: Sequelize.STRING
       },
       img: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(50),
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

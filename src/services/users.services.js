@@ -1,9 +1,9 @@
-const { users } = require("../models");
+const { user } = require("../models");
 
 class UserServices {
   static async add(userData) {
     try {
-      const result = await users.create(userData);
+      const result = await user.create(userData);
       return result;
     } catch (error) {
       throw error;

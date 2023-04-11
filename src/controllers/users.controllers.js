@@ -1,4 +1,5 @@
 const UserServices = require("../services/users.services");
+const { user } = require("../models");
 
 const createUser = async (req, res, next) => {
   try {
@@ -10,6 +11,18 @@ const createUser = async (req, res, next) => {
   }
 };
 
+const getUsers = async (req, res, next) => {
+  try {
+    const get_User = await user.findAll({
+      attributes: ["id", "username", "email", "password","avatar"],
+    })
+    res.json(get_User)
+  } catch (error) {
+    next(error)
+  }
+};
+
 module.exports = {
   createUser,
+  getUsers
 };

@@ -12,10 +12,13 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: "users",
+          key: "id",
+        },
       },
       totalPrice: {
         type: Sequelize.FLOAT,
-        allowNull: false,
         defaultValue: 0.0,
       },
       createdAt: {

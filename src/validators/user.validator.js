@@ -37,23 +37,23 @@ const createUserValidator = [
 ];
 
 const updateUserValidator = [
-  param("id").isInt().withMessage("El id debe ser un numero entero"),
-  check("username", "Error con el campo username")
+  param("id").isInt().withMessage("The id must be an integer"),
+  check("username", "Error with username field")
     .exists()
-    .withMessage("Debe existir la propiedad 'username'")
+    .withMessage("The property 'username' must exist")
     .notEmpty()
-    .withMessage("El username no debe estar vacio")
+    .withMessage("The username must not be empty")
     .isString()
-    .withMessage("El username debe ser un string")
-    .isLength({ min: 6, max: 30 })
-    .withMessage("El username debe tener entre 6 y 30 caracteres"),
-  check("avatar", "Error con el campo avatar")
+    .withMessage("Username must be a string")
+    .isLength({ min: 3, max: 30 })
+    .withMessage("Username must be between 3 and 30 characters"),
+  check("avatar", "Error with avatar field")
     .exists()
-    .withMessage("Debe existir la propiedad 'avatar'")
+    .withMessage("The 'avatar' property must exist")
     .notEmpty()
-    .withMessage("El avatar no debe estar vacio")
+    .withMessage("The avatar must not be empty")
     .isURL()
-    .withMessage("el avatar debe ser una URL valida"),
+    .withMessage("Avatar must be a valid Url"),
   (req, res, next) => {
     validateResult(req, res, next);
   },

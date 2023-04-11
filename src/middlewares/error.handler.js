@@ -8,16 +8,11 @@ const {
   InvalidConnectionError,
 } = require("sequelize");
 
-// TODO una funcion para loggear lo errores ( console.log() )
-
 const logError = (error, req, res, next) => {
   console.log(error);
   next(error);
 };
 
-// ! manejador de errores general
-// * error
-// * {status: 409, message: "ñldkfjdlkfgjldfk", name: "ldkjflksdfjl"}
 const errorHandler = (error, req, res, next) => {
   let { status } = error;
 

@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const {
-  createCar
+  createCar, getCar
 } = require("../controllers/car.controllers");
 
 const router = Router();
@@ -9,5 +9,6 @@ const router = Router();
 
 router.post("/car", createCar);
 // router.post("/orders/add-product", addProductToOrder);
+router.get("/car", getCar);
 
 module.exports = router;

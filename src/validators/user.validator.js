@@ -54,6 +54,11 @@ const updateUserValidator = [
     .withMessage("The avatar must not be empty")
     .isURL()
     .withMessage("Avatar must be a valid Url"),
+    check("password", "Error password, require min 7")
+    .exists()
+    .notEmpty()
+    .isString()
+    .isLength({ min: 7 }),
   (req, res, next) => {
     validateResult(req, res, next);
   },

@@ -4,7 +4,7 @@ const createCar = async (req, res, next) => {
   try {
     const carInfo = req.body;
     // {tableId, userId}
-    await orders.create(carInfo);
+    await car.create(carInfo);
     res.status(201).send();
   } catch (error) {
     console.log(error);
@@ -32,7 +32,17 @@ const createCar = async (req, res, next) => {
 //     next(error);
 //   }
 // };
-
+const getCar = async (req, res, next) => {
+  try {
+    const car_all = await car.findAll({
+      attributes: ["id", "userId","totalPrice"],
+    })
+    res.json(car_all)
+  } catch (error) {
+    next(error)
+  }
+};
 module.exports = {
-  createCar
+  createCar,
+  getCar
 };

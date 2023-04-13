@@ -22,7 +22,26 @@ const getUsers = async (req, res, next) => {
   }
 };
 
+
+const putUsers = async (req, res, next) => {
+  try {
+  const { id } = req.params;
+  const data = req.body;
+  await user.update(data, {
+    where: { id },
+  });
+  res.status(204).send()
+  } catch (error) {
+    next(error)
+  }try {
+} catch (error) {
+  next(error)
+}
+};
+
+
 module.exports = {
   createUser,
-  getUsers
+  getUsers,
+  putUsers
 };

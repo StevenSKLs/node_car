@@ -1,14 +1,11 @@
 const { Router } = require("express");
 const {
-  createCar, getCar
+  createCar, getCar, addProductToCar
 } = require("../controllers/car.controllers");
 
 const router = Router();
-
-// console.log(addProductToOrder);
-
 router.post("/car", createCar);
-// router.post("/orders/add-product", addProductToOrder);
+router.post("/car/add-product", addProductToCar);
 router.get("/car", getCar);
 
 module.exports = router;

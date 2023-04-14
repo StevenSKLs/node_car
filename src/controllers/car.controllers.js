@@ -1,4 +1,4 @@
-const { car } = require("../src/models");
+const { car , productincar } = require("../src/models");
 
 const createCar = async (req, res, next) => {
   try {
@@ -12,26 +12,21 @@ const createCar = async (req, res, next) => {
   }
 };
 
-// const addProductToOrder = async (req, res, next) => {
-//   try {
-//     // ? info necesaria
-//     // * orderId, productId, quantity, precio
-//     // agrego un producto
-//     // cantidad y trae un precio unitario
-//     // precio unitario * cantidad
-//     // sumo al total de la orden
-//     const { orderId, productId, quantity, price } = req.body;
-//     await order_details.create({ orderId, productId, quantity, price });
-//     const total = price * quantity;
-//     await orders.increment({ total }, { where: { id: orderId } });
-//     res.json({
-//       message: "Producto agregado satisfactoriamente",
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     next(error);
-//   }
-// };
+const addProductToCar = async (req, res, next) => {
+  try {
+
+    const { carId, productId, quantity, price } = req.body;
+    await productincar.create({ carId, productId, quantity, price });
+    const total = price * quantity;
+    await car.increment({ total }, { where: { id: carId } });
+    res.json({
+      message: "Product added successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+};
 const getCar = async (req, res, next) => {
   try {
     const car_all = await car.findAll({
@@ -44,5 +39,6 @@ const getCar = async (req, res, next) => {
 };
 module.exports = {
   createCar,
-  getCar
+  getCar,
+  addProductToCar
 };

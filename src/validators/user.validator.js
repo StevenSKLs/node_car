@@ -1,5 +1,5 @@
 const { check, param } = require("express-validator");
-const validateResult = require("../utils/validate");
+const validateResult = require("../services/validators");
 
 const createUserValidator = [
   check("username", "Error with field username")

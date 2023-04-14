@@ -36,14 +36,6 @@ const putProduct = async (req, res, next) => {
   }
 };
 
-for (let index = 0; index < array.length; index++) {
-    const element = array[index];
-    if (condition) {
-        
-    } else {
-        
-    }
-}
 
 module.exports = {
   createProduct,
